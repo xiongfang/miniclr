@@ -25,6 +25,20 @@ light.net is a lightweight clr(common language runtime) designed to provide a us
 - 每个模块如果有公有类，则需要添加一个public目录，给其他模块使用
 - 每个模块的私有代码，放置在private目录
 
+# 编译
+
+## Windows
+
+- 下载CMake
+- 指定项目目录
+- 指定输出目录为${项目目录}/build
+- Configure & Generate & OpenProject
+- 打开Visual Studio编译
+
+## Mac
+
+## Linux
+
 # 参考标准
 
 - [微软ECMA标准](https://github.com/xiongfang/coreclr/blob/master/Documentation/project-docs/dotnet-standards.md)
