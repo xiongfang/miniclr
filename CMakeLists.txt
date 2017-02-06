@@ -3,6 +3,7 @@ project (clr)
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
+SET(CMAKE_INSTALL_PREFIX ${PROJECT_BINARY_DIR})
 
 # The version number.
 set (LIGHT_NET_VERSION_MAJOR 1)
@@ -39,3 +40,6 @@ configure_file (
 include_directories ("${PROJECT_BINARY_DIR}")
 
 add_subdirectory (src)
+
+# 安装配置
+# install (TARGETS main clr DESTINATION bin)

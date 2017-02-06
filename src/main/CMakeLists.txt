@@ -5,3 +5,5 @@ set (EXTRA_LIBS ${EXTRA_LIBS} clr)
 
 add_executable (main ${SOURCE_FILES})
 target_link_libraries (main  ${EXTRA_LIBS})
+
+install (TARGETS main DESTINATION bin)

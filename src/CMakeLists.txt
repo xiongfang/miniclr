@@ -18,6 +18,8 @@ include_directories(.)
 # add the executable
 add_library (clr SHARED ${SOURCE_FILES})
 
+install (TARGETS clr DESTINATION bin)
+
 target_compile_definitions(clr PRIVATE DLL_EXPORTS)
 
 
