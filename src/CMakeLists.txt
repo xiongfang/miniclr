@@ -1,0 +1,24 @@
+﻿
+# define header and source files for the library
+file(GLOB_RECURSE HEADER_FILES 
+	"${CMAKE_CURRENT_SOURCE_DIR}/vm/*.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/type_system/*.h"
+)
+file(GLOB_RECURSE SOURCE_FILES 
+	"${CMAKE_CURRENT_SOURCE_DIR}/type_system/*.cpp" 
+	"${CMAKE_CURRENT_SOURCE_DIR}/vm/*.cpp"
+)
+
+
+include_directories(vm/public)
+include_directories(type_system/public)
+include_directories(.)
+
+
+# add the executable
+add_library (clr SHARED ${SOURCE_FILES})
+
+target_compile_definitions(clr PRIVATE DLL_EXPORTS)
+
+
+add_subdirectory (main)

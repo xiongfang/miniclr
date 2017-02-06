@@ -4,13 +4,38 @@ project (clr)
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
-# define header and source files for the library
-file(GLOB_RECURSE HEADER_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.h")
-file(GLOB_RECURSE SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+# The version number.
+set (LIGHT_NET_VERSION_MAJOR 1)
+set (LIGHT_NET_VERSION_MINOR 0)
 
-include_directories(src)
-include_directories(src/vm)
-include_directories(src/type_system)
+# 平台定义
 
-# add the executable
-add_library (clr SHARED ${SOURCE_FILES})
+if(MSVC)
+option(PLARFORM_WINDOWS "platform define" ON)
+endif(MSVC)
+
+if(ANDROID)
+option(PLARFORM_ANDROID "platform define" ON)
+endif(ANDROID)
+
+if(APPLE)
+if(APPLE_IOS)
+	option(PLARFORM_IOS "platform define" ON)
+else()
+	option(PLARFORM_OSX "platform define" ON)
+endif(APPLE_IOS)
+
+endif(APPLE)
+
+# configure a header file to pass some of the CMake settings
+# to the source code
+configure_file (
+  "${PROJECT_SOURCE_DIR}/src/cmakeconfig.h.in"
+  "${PROJECT_BINARY_DIR}/cmakeconfig.h"
+  )
+
+# add the binary tree to the search path for include files
+# so that we will find TutorialConfig.h
+include_directories ("${PROJECT_BINARY_DIR}")
+
+add_subdirectory (src)

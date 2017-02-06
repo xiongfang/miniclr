@@ -1,0 +1,4 @@
+#cmakedefine PLARFORM_WINDOWS
+#cmakedefine PLARFORM_ANDROID
+#cmakedefine PLARFORM_OSX
+#cmakedefine PLARFORM_IOS
