@@ -29,5 +29,4 @@ install (TARGETS clr DESTINATION bin)
 
 target_compile_definitions(clr PRIVATE DLL_EXPORTS)
 
-
 add_subdirectory (main)

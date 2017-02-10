@@ -3,7 +3,7 @@
 #include "cmakeconfig.h"
 
 
-//��׼ͷ�ļ�
+//标准头文件
 #include <cstddef>
 //#include <limits>
 #include <climits>
@@ -102,4 +102,6 @@
 	#else
 		#define CLR_DLL_EXPORT __declspec(dllimport)
 	#endif
+#else
+    #define CLR_DLL_EXPORT
 #endif

@@ -1,5 +1,7 @@
-﻿cmake_minimum_required (VERSION 2.6)
+cmake_minimum_required (VERSION 3.0)
 project (clr)
+
+add_compile_options(-std=c++11)
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 SET(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
@@ -25,6 +27,7 @@ if(APPLE_IOS)
 else()
 	option(PLARFORM_OSX "platform define" ON)
 endif(APPLE_IOS)
+
 
 endif(APPLE)
 

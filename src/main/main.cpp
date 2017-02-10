@@ -3,11 +3,13 @@
 #include "config.h"
 #include "ceeloader.h"
 
-void main()
+int main()
 {
 	std::cout << "main start" << std::endl;
 	
 
 	CEELoader Loader;
 	Loader.Load("test.dll");
+        
+        return 0;
 }
