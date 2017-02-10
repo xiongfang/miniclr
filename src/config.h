@@ -97,11 +97,12 @@
 #define uint16 unsigned short
 
 #ifdef PLARFORM_WINDOWS
-	#ifdef DLL_EXPORTS
-		#define CLR_DLL_EXPORT __declspec(dllexport)
-	#else
-		#define CLR_DLL_EXPORT __declspec(dllimport)
-	#endif
+#ifdef DLL_EXPORTS
+#define CLR_DLL_EXPORT __declspec(dllexport)
 #else
-    #define CLR_DLL_EXPORT
+#define CLR_DLL_EXPORT __declspec(dllimport)
 #endif
+#else
+#define CLR_DLL_EXPORT
+#endif
+
