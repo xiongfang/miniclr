@@ -7,7 +7,7 @@ enum SearchOption
 	AllDirectories = 1,
 };
 
-CLR_DLL_EXPORT class Directory
+class Directory
 {
 public:
 	 //static DirectoryInfo CreateDirectory(std::string path);

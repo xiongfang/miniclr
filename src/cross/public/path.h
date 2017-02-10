@@ -1,7 +1,7 @@
 #ifndef __PATH_H__
 #define __PATH_H__
 
-CLR_DLL_EXPORT class Path
+class Path
 {
 public:
 	static const char AltDirectorySeparatorChar;

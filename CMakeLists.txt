@@ -13,23 +13,28 @@ set (LIGHT_NET_VERSION_MINOR 0)
 
 # 平台定义
 
-if(MSVC)
+set(TARGET_PLATFORM "PLATFORM_WINDOWS")
+#set(TARGET_PLATFORM "PLARFORM_ANDROID")
+#set(TARGET_PLATFORM "PLATFORM_OSX")
+#set(TARGET_PLATFORM "PLATFORM_IOS")
+
+if(${TARGET_PLATFORM} MATCHES "PLATFORM_WINDOWS")
 option(PLARFORM_WINDOWS "platform define" ON)
-endif(MSVC)
+endif()
 
-if(ANDROID)
+if(${TARGET_PLATFORM} EQUAL "PLARFORM_ANDROID")
 option(PLARFORM_ANDROID "platform define" ON)
-endif(ANDROID)
+endif()
 
-if(APPLE)
-if(APPLE_IOS)
+if(${TARGET_PLATFORM} EQUAL "PLARFORM_IOS")
 	option(PLARFORM_IOS "platform define" ON)
-else()
+endif()
+
+if(${TARGET_PLATFORM} EQUAL "PLARFORM_OSX")
 	option(PLARFORM_OSX "platform define" ON)
-endif(APPLE_IOS)
+endif()
 
-
-endif(APPLE)
+message(STATUS ${TARGET_PLATFORM})
 
 # configure a header file to pass some of the CMake settings
 # to the source code

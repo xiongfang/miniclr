@@ -1,5 +1,3 @@
-
-#include <iostream>
 #include "config.h"
 #include "ceeloader.h"
 

@@ -3,7 +3,7 @@
 #include "config.h"
 
 
-CLR_DLL_EXPORT class CEELoader
+class CEELoader
 {
 private:
 	std::vector<std::string> load_path_list;
