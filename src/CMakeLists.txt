@@ -1,4 +1,3 @@
-﻿
 # define header and source files for the library
 file(GLOB_RECURSE HEADER_FILES 
 	"${CMAKE_CURRENT_SOURCE_DIR}/vm/*.h"
@@ -10,6 +9,7 @@ file(GLOB_RECURSE SOURCE_FILES
 )
 
 if(PLARFORM_WINDOWS)
+message(STATUS "Add Windows File")
 file(GLOB_RECURSE WIN_SOURCE_FILES 
 	"${CMAKE_CURRENT_SOURCE_DIR}/cross/private/windows/*.cpp" 
 )

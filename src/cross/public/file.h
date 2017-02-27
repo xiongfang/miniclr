@@ -51,7 +51,7 @@ public:
     //static FileStream OpenRead(const std::string& path);
     //static StreamReader OpenText(const std::string& path);
     //static FileStream OpenWrite(const std::string& path);
-    static std::list<uint8> ReadAllBytes(const std::string& path);
+    static std::vector<uint8> ReadAllBytes(const std::string& path);
     static const std::list<std::string> ReadAllLines(const std::string& path);
     static const std::list<std::string> ReadAllLines(const std::string& path, Encoding encoding);
     static std::string ReadAllText(const std::string& path);

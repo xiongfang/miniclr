@@ -16,8 +16,8 @@ public:
 	static std::string GetFileName(std::string path);
 	static std::string GetFileNameWithoutExtension(std::string path);
 	static std::string GetFullPath(std::string path);
-	static std::list<char> GetInvalidFileNameChars();
-	static std::list<char> GetInvalidPathChars();
+	static std::vector<char> GetInvalidFileNameChars();
+	static std::vector<char> GetInvalidPathChars();
 	static std::string GetPathRoot(std::string path);
 	static std::string GetRandomFileName();
 	static std::string GetTempFileName();

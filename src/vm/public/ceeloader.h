@@ -13,6 +13,8 @@ public:
 	void AddSeachPath(const std::string& path);
 
 	void Load(const std::string& name);
+        
+        void Parse(void* data,uint32 len);
 };
 
 #endif
