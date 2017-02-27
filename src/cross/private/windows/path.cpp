@@ -22,7 +22,7 @@ std::string Path::ChangeExtension(const std::string& path, const  std::string& e
 
 std::string Path::Combine(const std::string& path1, const  std::string& path2)
 {
-	if (path1[path1.length() - 1] != AltDirectorySeparatorChar || path1[path1.length() - 1] != DirectorySeparatorChar)
+	if (path1[path1.length() - 1] != AltDirectorySeparatorChar && path1[path1.length() - 1] != DirectorySeparatorChar)
 		return path1 + DirectorySeparatorChar+ path2;
 	else
 	{

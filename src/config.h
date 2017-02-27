@@ -107,3 +107,25 @@ typedef unsigned short uint16;
 #define CLR_DLL_EXPORT
 #endif
 
+enum LogLevel
+{
+    Info,
+    Warning,
+    Error
+};
+
+void Log(LogLevel lv,const char* module,const char* msg);
+
+class clr_exception:public std::exception
+{
+    const char* _msg;
+public:
+    clr_exception(const char* msg) _GLIBCXX_USE_NOEXCEPT
+    {
+        _msg = msg;
+    }
+    const char* what() const _GLIBCXX_USE_NOEXCEPT
+    {
+        return _msg;
+    }
+};

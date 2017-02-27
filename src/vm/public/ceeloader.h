@@ -14,7 +14,7 @@ public:
 
 	void Load(const std::string& name);
         
-        void Parse(void* data,uint32 len);
+        void Parse(uint8* data,uint32 len);
 };
 
 #endif
