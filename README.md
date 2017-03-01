@@ -29,11 +29,16 @@ light.net is a lightweight clr(common language runtime) designed to provide a us
 
 ## Windows
 
+CMake + VisualStudio
 - 下载CMake
 - 指定项目目录
 - 指定输出目录为${项目目录}/build
 - Configure & Generate & OpenProject
 - 打开Visual Studio编译
+
+NetBeans + CMake + Cygwin
+
+- [http://blog.csdn.net/x_studying/article/details/59111657](http://blog.csdn.net/x_studying/article/details/59111657)
 
 ## Mac
 
