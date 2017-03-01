@@ -1,11 +1,11 @@
 # define header and source files for the library
 file(GLOB_RECURSE HEADER_FILES 
-	"${CMAKE_CURRENT_SOURCE_DIR}/vm/*.h"
-	"${CMAKE_CURRENT_SOURCE_DIR}/type_system/*.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/mini/*.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/metadata/*.h"
 )
 file(GLOB_RECURSE SOURCE_FILES 
-	"${CMAKE_CURRENT_SOURCE_DIR}/type_system/*.cpp" 
-	"${CMAKE_CURRENT_SOURCE_DIR}/vm/*.cpp"
+	"${CMAKE_CURRENT_SOURCE_DIR}/metadata/*.cpp" 
+	"${CMAKE_CURRENT_SOURCE_DIR}/mini/*.cpp"
 )
 
 if(PLARFORM_WINDOWS)
@@ -16,8 +16,8 @@ file(GLOB_RECURSE WIN_SOURCE_FILES
 list(APPEND SOURCE_FILES "${WIN_SOURCE_FILES}")
 endif(PLARFORM_WINDOWS)
 
-include_directories(vm/public)
-include_directories(type_system/public)
+include_directories(mini/public)
+include_directories(metadata/public)
 include_directories(cross/public)
 include_directories(.)
 
