@@ -16,9 +16,11 @@ void CEELoader::Load(const std::string& name) {
             return;
         }
         
+        
     }
 }
 
+#pragma pack(push,1)
 struct PE_Header
 {
     uint16 Machine;
@@ -29,12 +31,14 @@ struct PE_Header
     uint16 OptHeaderSize;
     uint16 Characteristics;
 };
+#pragma pack(pop)
 
 struct PE_OptHeader
 {
     
 };
 
+#pragma pack(push,1)
 struct CLI_Header
 {
     uint32 Cb;
@@ -50,6 +54,7 @@ struct CLI_Header
     uint64 ExportAddressTableJumps;
     uint64 ManagedNativeHeader;
 };
+#pragma pack(pop)
 
 struct CLI_Runtime_Flags
 {
@@ -67,14 +72,14 @@ void CEELoader::Parse(uint8* data,uint32 len)
     char lfanew[4] = { 'P','E','\0','\0' };
     for(int32 i = 0;i<4;i++)
     {
-        if(data[0x3c+i]!=lfanew[i])
+        if(data[0x80+i]!=lfanew[i])
         {
             Log(Info,"vm","Parse Failed,invalide .net file");
             throw clr_exception("Parse Failed,invalide .net file");
             return;
         }
     }
-    data += 0x40;
+    data += 0x84;
     //pe header
     PE_Header* peHeader = (PE_Header*)data;
     
@@ -88,7 +93,7 @@ void CEELoader::Parse(uint8* data,uint32 len)
     //CLI header
     CLI_Header* cliHeader = (CLI_Header*)data;
     
-    data += 72;
+    data += cliHeader->Cb;
     
     
     //CLI Body
