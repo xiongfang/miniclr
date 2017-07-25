@@ -14,7 +14,7 @@ using namespace Metadata;
 std::string UserStringHeap::ReadStringAt(uint32 index) {
     int start = (int) index;
 
-    uint length = (uint) (Mixin::ReadCompressedUInt32(data,&start) & ~1);
+    uint32 length = (uint32) (Mixin::ReadCompressedUInt32(data,start) & ~1);
     if (length < 1)
         return "";
 
@@ -23,5 +23,5 @@ std::string UserStringHeap::ReadStringAt(uint32 index) {
     for (int i = start, j = 0; i < start + length; i += 2)
         chars [j++] = (char) (data [i] | (data [i + 1] << 8));
 
-    return new string(chars);
+    return string(chars);
 }

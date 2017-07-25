@@ -3,27 +3,27 @@
 #include "Utilities.h"
 using namespace Metadata;
 
-uint Mixin::ReadCompressedUInt32(std::vector<uint8>& data, int32& position) {
-    uint integer;
+uint32 Mixin::ReadCompressedUInt32(std::vector<uint8>& data, int32& position) {
+    uint32 integer;
     if ((data [position] & 0x80) == 0) {
         integer = data [position];
         position++;
     } else if ((data [position] & 0x40) == 0) {
-        integer = (uint) (data [position] & ~0x80) << 8;
+        integer = (uint32) (data [position] & ~0x80) << 8;
         integer |= data [position + 1];
         position += 2;
     } else {
-        integer = (uint) (data [position] & ~0xc0) << 24;
-        integer |= (uint) data [position + 1] << 16;
-        integer |= (uint) data [position + 2] << 8;
-        integer |= (uint) data [position + 3];
+        integer = (uint32) (data [position] & ~0xc0) << 24;
+        integer |= (uint32) data [position + 1] << 16;
+        integer |= (uint32) data [position + 2] << 8;
+        integer |= (uint32) data [position + 3];
         position += 4;
     }
     return integer;
 }
 //
 //MetadataToken Mixin::GetMetadataToken(CodedIndex& self, uint32 data) {
-//    uint rid;
+//    uint32 rid;
 //    TokenType token_type;
 //    switch (self) {
 //        case CodedIndex.TypeDefOrRef:

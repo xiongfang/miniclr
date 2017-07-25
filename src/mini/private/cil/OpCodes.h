@@ -8,890 +8,235 @@
 
 #ifndef OPCODES_H
 #define OPCODES_H
+#include "OpCode.h"
 
 namespace Cil
 {
    class OpCodes {
    public:
-		 static const OpCode*  OneByteOpCode;
-		 static const OpCode* TwoBytesOpCode;
-
-		 static const OpCode Nop = new OpCode (
-			0xff << 0 | 0x00 << 8 | (byte) Code.Nop << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Break = new OpCode (
-			0xff << 0 | 0x01 << 8 | (byte) Code.Break << 16 | (byte) FlowControl.Break << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ldarg_0 = new OpCode (
-			0xff << 0 | 0x02 << 8 | (byte) Code.Ldarg_0 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldarg_1 = new OpCode (
-			0xff << 0 | 0x03 << 8 | (byte) Code.Ldarg_1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldarg_2 = new OpCode (
-			0xff << 0 | 0x04 << 8 | (byte) Code.Ldarg_2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldarg_3 = new OpCode (
-			0xff << 0 | 0x05 << 8 | (byte) Code.Ldarg_3 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldloc_0 = new OpCode (
-			0xff << 0 | 0x06 << 8 | (byte) Code.Ldloc_0 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldloc_1 = new OpCode (
-			0xff << 0 | 0x07 << 8 | (byte) Code.Ldloc_1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldloc_2 = new OpCode (
-			0xff << 0 | 0x08 << 8 | (byte) Code.Ldloc_2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldloc_3 = new OpCode (
-			0xff << 0 | 0x09 << 8 | (byte) Code.Ldloc_3 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Stloc_0 = new OpCode (
-			0xff << 0 | 0x0a << 8 | (byte) Code.Stloc_0 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stloc_1 = new OpCode (
-			0xff << 0 | 0x0b << 8 | (byte) Code.Stloc_1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stloc_2 = new OpCode (
-			0xff << 0 | 0x0c << 8 | (byte) Code.Stloc_2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stloc_3 = new OpCode (
-			0xff << 0 | 0x0d << 8 | (byte) Code.Stloc_3 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ldarg_S = new OpCode (
-			0xff << 0 | 0x0e << 8 | (byte) Code.Ldarg_S << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineArg << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldarga_S = new OpCode (
-			0xff << 0 | 0x0f << 8 | (byte) Code.Ldarga_S << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineArg << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Starg_S = new OpCode (
-			0xff << 0 | 0x10 << 8 | (byte) Code.Starg_S << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineArg << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ldloc_S = new OpCode (
-			0xff << 0 | 0x11 << 8 | (byte) Code.Ldloc_S << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineVar << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldloca_S = new OpCode (
-			0xff << 0 | 0x12 << 8 | (byte) Code.Ldloca_S << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineVar << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Stloc_S = new OpCode (
-			0xff << 0 | 0x13 << 8 | (byte) Code.Stloc_S << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineVar << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ldnull = new OpCode (
-			0xff << 0 | 0x14 << 8 | (byte) Code.Ldnull << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushref << 24);
-
-		 static const OpCode Ldc_I4_M1 = new OpCode (
-			0xff << 0 | 0x15 << 8 | (byte) Code.Ldc_I4_M1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldc_I4_0 = new OpCode (
-			0xff << 0 | 0x16 << 8 | (byte) Code.Ldc_I4_0 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldc_I4_1 = new OpCode (
-			0xff << 0 | 0x17 << 8 | (byte) Code.Ldc_I4_1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldc_I4_2 = new OpCode (
-			0xff << 0 | 0x18 << 8 | (byte) Code.Ldc_I4_2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldc_I4_3 = new OpCode (
-			0xff << 0 | 0x19 << 8 | (byte) Code.Ldc_I4_3 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldc_I4_4 = new OpCode (
-			0xff << 0 | 0x1a << 8 | (byte) Code.Ldc_I4_4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldc_I4_5 = new OpCode (
-			0xff << 0 | 0x1b << 8 | (byte) Code.Ldc_I4_5 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldc_I4_6 = new OpCode (
-			0xff << 0 | 0x1c << 8 | (byte) Code.Ldc_I4_6 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldc_I4_7 = new OpCode (
-			0xff << 0 | 0x1d << 8 | (byte) Code.Ldc_I4_7 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldc_I4_8 = new OpCode (
-			0xff << 0 | 0x1e << 8 | (byte) Code.Ldc_I4_8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldc_I4_S = new OpCode (
-			0xff << 0 | 0x1f << 8 | (byte) Code.Ldc_I4_S << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineI << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldc_I4 = new OpCode (
-			0xff << 0 | 0x20 << 8 | (byte) Code.Ldc_I4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineI << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldc_I8 = new OpCode (
-			0xff << 0 | 0x21 << 8 | (byte) Code.Ldc_I8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineI8 << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi8 << 24);
-
-		 static const OpCode Ldc_R4 = new OpCode (
-			0xff << 0 | 0x22 << 8 | (byte) Code.Ldc_R4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.ShortInlineR << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushr4 << 24);
-
-		 static const OpCode Ldc_R8 = new OpCode (
-			0xff << 0 | 0x23 << 8 | (byte) Code.Ldc_R8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineR << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushr8 << 24);
-
-		 static const OpCode Dup = new OpCode (
-			0xff << 0 | 0x25 << 8 | (byte) Code.Dup << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Push1_push1 << 24);
-
-		 static const OpCode Pop = new OpCode (
-			0xff << 0 | 0x26 << 8 | (byte) Code.Pop << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Jmp = new OpCode (
-			0xff << 0 | 0x27 << 8 | (byte) Code.Jmp << 16 | (byte) FlowControl.Call << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineMethod << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Call = new OpCode (
-			0xff << 0 | 0x28 << 8 | (byte) Code.Call << 16 | (byte) FlowControl.Call << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineMethod << 8 | (byte) StackBehaviour.Varpop << 16 | (byte) StackBehaviour.Varpush << 24);
-
-		 static const OpCode Calli = new OpCode (
-			0xff << 0 | 0x29 << 8 | (byte) Code.Calli << 16 | (byte) FlowControl.Call << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineSig << 8 | (byte) StackBehaviour.Varpop << 16 | (byte) StackBehaviour.Varpush << 24);
-
-		 static const OpCode Ret = new OpCode (
-			0xff << 0 | 0x2a << 8 | (byte) Code.Ret << 16 | (byte) FlowControl.Return << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Varpop << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Br_S = new OpCode (
-			0xff << 0 | 0x2b << 8 | (byte) Code.Br_S << 16 | (byte) FlowControl.Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Brfalse_S = new OpCode (
-			0xff << 0 | 0x2c << 8 | (byte) Code.Brfalse_S << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Brtrue_S = new OpCode (
-			0xff << 0 | 0x2d << 8 | (byte) Code.Brtrue_S << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Beq_S = new OpCode (
-			0xff << 0 | 0x2e << 8 | (byte) Code.Beq_S << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Bge_S = new OpCode (
-			0xff << 0 | 0x2f << 8 | (byte) Code.Bge_S << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Bgt_S = new OpCode (
-			0xff << 0 | 0x30 << 8 | (byte) Code.Bgt_S << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ble_S = new OpCode (
-			0xff << 0 | 0x31 << 8 | (byte) Code.Ble_S << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Blt_S = new OpCode (
-			0xff << 0 | 0x32 << 8 | (byte) Code.Blt_S << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Bne_Un_S = new OpCode (
-			0xff << 0 | 0x33 << 8 | (byte) Code.Bne_Un_S << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Bge_Un_S = new OpCode (
-			0xff << 0 | 0x34 << 8 | (byte) Code.Bge_Un_S << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Bgt_Un_S = new OpCode (
-			0xff << 0 | 0x35 << 8 | (byte) Code.Bgt_Un_S << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ble_Un_S = new OpCode (
-			0xff << 0 | 0x36 << 8 | (byte) Code.Ble_Un_S << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Blt_Un_S = new OpCode (
-			0xff << 0 | 0x37 << 8 | (byte) Code.Blt_Un_S << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Br = new OpCode (
-			0xff << 0 | 0x38 << 8 | (byte) Code.Br << 16 | (byte) FlowControl.Branch << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Brfalse = new OpCode (
-			0xff << 0 | 0x39 << 8 | (byte) Code.Brfalse << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Brtrue = new OpCode (
-			0xff << 0 | 0x3a << 8 | (byte) Code.Brtrue << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Beq = new OpCode (
-			0xff << 0 | 0x3b << 8 | (byte) Code.Beq << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Bge = new OpCode (
-			0xff << 0 | 0x3c << 8 | (byte) Code.Bge << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Bgt = new OpCode (
-			0xff << 0 | 0x3d << 8 | (byte) Code.Bgt << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ble = new OpCode (
-			0xff << 0 | 0x3e << 8 | (byte) Code.Ble << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Blt = new OpCode (
-			0xff << 0 | 0x3f << 8 | (byte) Code.Blt << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Bne_Un = new OpCode (
-			0xff << 0 | 0x40 << 8 | (byte) Code.Bne_Un << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Bge_Un = new OpCode (
-			0xff << 0 | 0x41 << 8 | (byte) Code.Bge_Un << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Bgt_Un = new OpCode (
-			0xff << 0 | 0x42 << 8 | (byte) Code.Bgt_Un << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ble_Un = new OpCode (
-			0xff << 0 | 0x43 << 8 | (byte) Code.Ble_Un << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Blt_Un = new OpCode (
-			0xff << 0 | 0x44 << 8 | (byte) Code.Blt_Un << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Switch = new OpCode (
-			0xff << 0 | 0x45 << 8 | (byte) Code.Switch << 16 | (byte) FlowControl.Cond_Branch << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineSwitch << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ldind_I1 = new OpCode (
-			0xff << 0 | 0x46 << 8 | (byte) Code.Ldind_I1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldind_U1 = new OpCode (
-			0xff << 0 | 0x47 << 8 | (byte) Code.Ldind_U1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldind_I2 = new OpCode (
-			0xff << 0 | 0x48 << 8 | (byte) Code.Ldind_I2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldind_U2 = new OpCode (
-			0xff << 0 | 0x49 << 8 | (byte) Code.Ldind_U2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldind_I4 = new OpCode (
-			0xff << 0 | 0x4a << 8 | (byte) Code.Ldind_I4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldind_U4 = new OpCode (
-			0xff << 0 | 0x4b << 8 | (byte) Code.Ldind_U4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldind_I8 = new OpCode (
-			0xff << 0 | 0x4c << 8 | (byte) Code.Ldind_I8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Pushi8 << 24);
-
-		 static const OpCode Ldind_I = new OpCode (
-			0xff << 0 | 0x4d << 8 | (byte) Code.Ldind_I << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldind_R4 = new OpCode (
-			0xff << 0 | 0x4e << 8 | (byte) Code.Ldind_R4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Pushr4 << 24);
-
-		 static const OpCode Ldind_R8 = new OpCode (
-			0xff << 0 | 0x4f << 8 | (byte) Code.Ldind_R8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Pushr8 << 24);
-
-		 static const OpCode Ldind_Ref = new OpCode (
-			0xff << 0 | 0x50 << 8 | (byte) Code.Ldind_Ref << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Pushref << 24);
-
-		 static const OpCode Stind_Ref = new OpCode (
-			0xff << 0 | 0x51 << 8 | (byte) Code.Stind_Ref << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi_popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stind_I1 = new OpCode (
-			0xff << 0 | 0x52 << 8 | (byte) Code.Stind_I1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi_popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stind_I2 = new OpCode (
-			0xff << 0 | 0x53 << 8 | (byte) Code.Stind_I2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi_popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stind_I4 = new OpCode (
-			0xff << 0 | 0x54 << 8 | (byte) Code.Stind_I4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi_popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stind_I8 = new OpCode (
-			0xff << 0 | 0x55 << 8 | (byte) Code.Stind_I8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi_popi8 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stind_R4 = new OpCode (
-			0xff << 0 | 0x56 << 8 | (byte) Code.Stind_R4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi_popr4 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stind_R8 = new OpCode (
-			0xff << 0 | 0x57 << 8 | (byte) Code.Stind_R8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi_popr8 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Add = new OpCode (
-			0xff << 0 | 0x58 << 8 | (byte) Code.Add << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Sub = new OpCode (
-			0xff << 0 | 0x59 << 8 | (byte) Code.Sub << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Mul = new OpCode (
-			0xff << 0 | 0x5a << 8 | (byte) Code.Mul << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Div = new OpCode (
-			0xff << 0 | 0x5b << 8 | (byte) Code.Div << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Div_Un = new OpCode (
-			0xff << 0 | 0x5c << 8 | (byte) Code.Div_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Rem = new OpCode (
-			0xff << 0 | 0x5d << 8 | (byte) Code.Rem << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Rem_Un = new OpCode (
-			0xff << 0 | 0x5e << 8 | (byte) Code.Rem_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode And = new OpCode (
-			0xff << 0 | 0x5f << 8 | (byte) Code.And << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Or = new OpCode (
-			0xff << 0 | 0x60 << 8 | (byte) Code.Or << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Xor = new OpCode (
-			0xff << 0 | 0x61 << 8 | (byte) Code.Xor << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Shl = new OpCode (
-			0xff << 0 | 0x62 << 8 | (byte) Code.Shl << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Shr = new OpCode (
-			0xff << 0 | 0x63 << 8 | (byte) Code.Shr << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Shr_Un = new OpCode (
-			0xff << 0 | 0x64 << 8 | (byte) Code.Shr_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Neg = new OpCode (
-			0xff << 0 | 0x65 << 8 | (byte) Code.Neg << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Not = new OpCode (
-			0xff << 0 | 0x66 << 8 | (byte) Code.Not << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Conv_I1 = new OpCode (
-			0xff << 0 | 0x67 << 8 | (byte) Code.Conv_I1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_I2 = new OpCode (
-			0xff << 0 | 0x68 << 8 | (byte) Code.Conv_I2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_I4 = new OpCode (
-			0xff << 0 | 0x69 << 8 | (byte) Code.Conv_I4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_I8 = new OpCode (
-			0xff << 0 | 0x6a << 8 | (byte) Code.Conv_I8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi8 << 24);
-
-		 static const OpCode Conv_R4 = new OpCode (
-			0xff << 0 | 0x6b << 8 | (byte) Code.Conv_R4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushr4 << 24);
-
-		 static const OpCode Conv_R8 = new OpCode (
-			0xff << 0 | 0x6c << 8 | (byte) Code.Conv_R8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushr8 << 24);
-
-		 static const OpCode Conv_U4 = new OpCode (
-			0xff << 0 | 0x6d << 8 | (byte) Code.Conv_U4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_U8 = new OpCode (
-			0xff << 0 | 0x6e << 8 | (byte) Code.Conv_U8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi8 << 24);
-
-		 static const OpCode Callvirt = new OpCode (
-			0xff << 0 | 0x6f << 8 | (byte) Code.Callvirt << 16 | (byte) FlowControl.Call << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineMethod << 8 | (byte) StackBehaviour.Varpop << 16 | (byte) StackBehaviour.Varpush << 24);
-
-		 static const OpCode Cpobj = new OpCode (
-			0xff << 0 | 0x70 << 8 | (byte) Code.Cpobj << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Popi_popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ldobj = new OpCode (
-			0xff << 0 | 0x71 << 8 | (byte) Code.Ldobj << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldstr = new OpCode (
-			0xff << 0 | 0x72 << 8 | (byte) Code.Ldstr << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineString << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushref << 24);
-
-		 static const OpCode Newobj = new OpCode (
-			0xff << 0 | 0x73 << 8 | (byte) Code.Newobj << 16 | (byte) FlowControl.Call << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineMethod << 8 | (byte) StackBehaviour.Varpop << 16 | (byte) StackBehaviour.Pushref << 24);
-
-		 static const OpCode Castclass = new OpCode (
-			0xff << 0 | 0x74 << 8 | (byte) Code.Castclass << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Popref << 16 | (byte) StackBehaviour.Pushref << 24);
-
-		 static const OpCode Isinst = new OpCode (
-			0xff << 0 | 0x75 << 8 | (byte) Code.Isinst << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Popref << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_R_Un = new OpCode (
-			0xff << 0 | 0x76 << 8 | (byte) Code.Conv_R_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushr8 << 24);
-
-		 static const OpCode Unbox = new OpCode (
-			0xff << 0 | 0x79 << 8 | (byte) Code.Unbox << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Popref << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Throw = new OpCode (
-			0xff << 0 | 0x7a << 8 | (byte) Code.Throw << 16 | (byte) FlowControl.Throw << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ldfld = new OpCode (
-			0xff << 0 | 0x7b << 8 | (byte) Code.Ldfld << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineField << 8 | (byte) StackBehaviour.Popref << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldflda = new OpCode (
-			0xff << 0 | 0x7c << 8 | (byte) Code.Ldflda << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineField << 8 | (byte) StackBehaviour.Popref << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Stfld = new OpCode (
-			0xff << 0 | 0x7d << 8 | (byte) Code.Stfld << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineField << 8 | (byte) StackBehaviour.Popref_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ldsfld = new OpCode (
-			0xff << 0 | 0x7e << 8 | (byte) Code.Ldsfld << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineField << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldsflda = new OpCode (
-			0xff << 0 | 0x7f << 8 | (byte) Code.Ldsflda << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineField << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Stsfld = new OpCode (
-			0xff << 0 | 0x80 << 8 | (byte) Code.Stsfld << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineField << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stobj = new OpCode (
-			0xff << 0 | 0x81 << 8 | (byte) Code.Stobj << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Popi_pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Conv_Ovf_I1_Un = new OpCode (
-			0xff << 0 | 0x82 << 8 | (byte) Code.Conv_Ovf_I1_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_I2_Un = new OpCode (
-			0xff << 0 | 0x83 << 8 | (byte) Code.Conv_Ovf_I2_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_I4_Un = new OpCode (
-			0xff << 0 | 0x84 << 8 | (byte) Code.Conv_Ovf_I4_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_I8_Un = new OpCode (
-			0xff << 0 | 0x85 << 8 | (byte) Code.Conv_Ovf_I8_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi8 << 24);
-
-		 static const OpCode Conv_Ovf_U1_Un = new OpCode (
-			0xff << 0 | 0x86 << 8 | (byte) Code.Conv_Ovf_U1_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_U2_Un = new OpCode (
-			0xff << 0 | 0x87 << 8 | (byte) Code.Conv_Ovf_U2_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_U4_Un = new OpCode (
-			0xff << 0 | 0x88 << 8 | (byte) Code.Conv_Ovf_U4_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_U8_Un = new OpCode (
-			0xff << 0 | 0x89 << 8 | (byte) Code.Conv_Ovf_U8_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi8 << 24);
-
-		 static const OpCode Conv_Ovf_I_Un = new OpCode (
-			0xff << 0 | 0x8a << 8 | (byte) Code.Conv_Ovf_I_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_U_Un = new OpCode (
-			0xff << 0 | 0x8b << 8 | (byte) Code.Conv_Ovf_U_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Box = new OpCode (
-			0xff << 0 | 0x8c << 8 | (byte) Code.Box << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushref << 24);
-
-		 static const OpCode Newarr = new OpCode (
-			0xff << 0 | 0x8d << 8 | (byte) Code.Newarr << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Pushref << 24);
-
-		 static const OpCode Ldlen = new OpCode (
-			0xff << 0 | 0x8e << 8 | (byte) Code.Ldlen << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldelema = new OpCode (
-			0xff << 0 | 0x8f << 8 | (byte) Code.Ldelema << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Popref_popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldelem_I1 = new OpCode (
-			0xff << 0 | 0x90 << 8 | (byte) Code.Ldelem_I1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldelem_U1 = new OpCode (
-			0xff << 0 | 0x91 << 8 | (byte) Code.Ldelem_U1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldelem_I2 = new OpCode (
-			0xff << 0 | 0x92 << 8 | (byte) Code.Ldelem_I2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldelem_U2 = new OpCode (
-			0xff << 0 | 0x93 << 8 | (byte) Code.Ldelem_U2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldelem_I4 = new OpCode (
-			0xff << 0 | 0x94 << 8 | (byte) Code.Ldelem_I4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldelem_U4 = new OpCode (
-			0xff << 0 | 0x95 << 8 | (byte) Code.Ldelem_U4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldelem_I8 = new OpCode (
-			0xff << 0 | 0x96 << 8 | (byte) Code.Ldelem_I8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi << 16 | (byte) StackBehaviour.Pushi8 << 24);
-
-		 static const OpCode Ldelem_I = new OpCode (
-			0xff << 0 | 0x97 << 8 | (byte) Code.Ldelem_I << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldelem_R4 = new OpCode (
-			0xff << 0 | 0x98 << 8 | (byte) Code.Ldelem_R4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi << 16 | (byte) StackBehaviour.Pushr4 << 24);
-
-		 static const OpCode Ldelem_R8 = new OpCode (
-			0xff << 0 | 0x99 << 8 | (byte) Code.Ldelem_R8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi << 16 | (byte) StackBehaviour.Pushr8 << 24);
-
-		 static const OpCode Ldelem_Ref = new OpCode (
-			0xff << 0 | 0x9a << 8 | (byte) Code.Ldelem_Ref << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi << 16 | (byte) StackBehaviour.Pushref << 24);
-
-		 static const OpCode Stelem_I = new OpCode (
-			0xff << 0 | 0x9b << 8 | (byte) Code.Stelem_I << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi_popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stelem_I1 = new OpCode (
-			0xff << 0 | 0x9c << 8 | (byte) Code.Stelem_I1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi_popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stelem_I2 = new OpCode (
-			0xff << 0 | 0x9d << 8 | (byte) Code.Stelem_I2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi_popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stelem_I4 = new OpCode (
-			0xff << 0 | 0x9e << 8 | (byte) Code.Stelem_I4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi_popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stelem_I8 = new OpCode (
-			0xff << 0 | 0x9f << 8 | (byte) Code.Stelem_I8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi_popi8 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stelem_R4 = new OpCode (
-			0xff << 0 | 0xa0 << 8 | (byte) Code.Stelem_R4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi_popr4 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stelem_R8 = new OpCode (
-			0xff << 0 | 0xa1 << 8 | (byte) Code.Stelem_R8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi_popr8 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stelem_Ref = new OpCode (
-			0xff << 0 | 0xa2 << 8 | (byte) Code.Stelem_Ref << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popref_popi_popref << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ldelem_Any = new OpCode (
-			0xff << 0 | 0xa3 << 8 | (byte) Code.Ldelem_Any << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Popref_popi << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Stelem_Any = new OpCode (
-			0xff << 0 | 0xa4 << 8 | (byte) Code.Stelem_Any << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Popref_popi_popref << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Unbox_Any = new OpCode (
-			0xff << 0 | 0xa5 << 8 | (byte) Code.Unbox_Any << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Popref << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Conv_Ovf_I1 = new OpCode (
-			0xff << 0 | 0xb3 << 8 | (byte) Code.Conv_Ovf_I1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_U1 = new OpCode (
-			0xff << 0 | 0xb4 << 8 | (byte) Code.Conv_Ovf_U1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_I2 = new OpCode (
-			0xff << 0 | 0xb5 << 8 | (byte) Code.Conv_Ovf_I2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_U2 = new OpCode (
-			0xff << 0 | 0xb6 << 8 | (byte) Code.Conv_Ovf_U2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_I4 = new OpCode (
-			0xff << 0 | 0xb7 << 8 | (byte) Code.Conv_Ovf_I4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_U4 = new OpCode (
-			0xff << 0 | 0xb8 << 8 | (byte) Code.Conv_Ovf_U4 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_I8 = new OpCode (
-			0xff << 0 | 0xb9 << 8 | (byte) Code.Conv_Ovf_I8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi8 << 24);
-
-		 static const OpCode Conv_Ovf_U8 = new OpCode (
-			0xff << 0 | 0xba << 8 | (byte) Code.Conv_Ovf_U8 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi8 << 24);
-
-		 static const OpCode Refanyval = new OpCode (
-			0xff << 0 | 0xc2 << 8 | (byte) Code.Refanyval << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ckfinite = new OpCode (
-			0xff << 0 | 0xc3 << 8 | (byte) Code.Ckfinite << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushr8 << 24);
-
-		 static const OpCode Mkrefany = new OpCode (
-			0xff << 0 | 0xc6 << 8 | (byte) Code.Mkrefany << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldtoken = new OpCode (
-			0xff << 0 | 0xd0 << 8 | (byte) Code.Ldtoken << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineTok << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_U2 = new OpCode (
-			0xff << 0 | 0xd1 << 8 | (byte) Code.Conv_U2 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_U1 = new OpCode (
-			0xff << 0 | 0xd2 << 8 | (byte) Code.Conv_U1 << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_I = new OpCode (
-			0xff << 0 | 0xd3 << 8 | (byte) Code.Conv_I << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_I = new OpCode (
-			0xff << 0 | 0xd4 << 8 | (byte) Code.Conv_Ovf_I << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Conv_Ovf_U = new OpCode (
-			0xff << 0 | 0xd5 << 8 | (byte) Code.Conv_Ovf_U << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Add_Ovf = new OpCode (
-			0xff << 0 | 0xd6 << 8 | (byte) Code.Add_Ovf << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Add_Ovf_Un = new OpCode (
-			0xff << 0 | 0xd7 << 8 | (byte) Code.Add_Ovf_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Mul_Ovf = new OpCode (
-			0xff << 0 | 0xd8 << 8 | (byte) Code.Mul_Ovf << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Mul_Ovf_Un = new OpCode (
-			0xff << 0 | 0xd9 << 8 | (byte) Code.Mul_Ovf_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Sub_Ovf = new OpCode (
-			0xff << 0 | 0xda << 8 | (byte) Code.Sub_Ovf << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Sub_Ovf_Un = new OpCode (
-			0xff << 0 | 0xdb << 8 | (byte) Code.Sub_Ovf_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Endfinally = new OpCode (
-			0xff << 0 | 0xdc << 8 | (byte) Code.Endfinally << 16 | (byte) FlowControl.Return << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Leave = new OpCode (
-			0xff << 0 | 0xdd << 8 | (byte) Code.Leave << 16 | (byte) FlowControl.Branch << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineBrTarget << 8 | (byte) StackBehaviour.PopAll << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Leave_S = new OpCode (
-			0xff << 0 | 0xde << 8 | (byte) Code.Leave_S << 16 | (byte) FlowControl.Branch << 24,
-			(byte) OpCodeType.Macro << 0 | (byte) OperandType.ShortInlineBrTarget << 8 | (byte) StackBehaviour.PopAll << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Stind_I = new OpCode (
-			0xff << 0 | 0xdf << 8 | (byte) Code.Stind_I << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi_popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Conv_U = new OpCode (
-			0xff << 0 | 0xe0 << 8 | (byte) Code.Conv_U << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Arglist = new OpCode (
-			0xfe << 0 | 0x00 << 8 | (byte) Code.Arglist << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ceq = new OpCode (
-			0xfe << 0 | 0x01 << 8 | (byte) Code.Ceq << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Cgt = new OpCode (
-			0xfe << 0 | 0x02 << 8 | (byte) Code.Cgt << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Cgt_Un = new OpCode (
-			0xfe << 0 | 0x03 << 8 | (byte) Code.Cgt_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Clt = new OpCode (
-			0xfe << 0 | 0x04 << 8 | (byte) Code.Clt << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Clt_Un = new OpCode (
-			0xfe << 0 | 0x05 << 8 | (byte) Code.Clt_Un << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1_pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldftn = new OpCode (
-			0xfe << 0 | 0x06 << 8 | (byte) Code.Ldftn << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineMethod << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldvirtftn = new OpCode (
-			0xfe << 0 | 0x07 << 8 | (byte) Code.Ldvirtftn << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineMethod << 8 | (byte) StackBehaviour.Popref << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Ldarg = new OpCode (
-			0xfe << 0 | 0x09 << 8 | (byte) Code.Ldarg << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineArg << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldarga = new OpCode (
-			0xfe << 0 | 0x0a << 8 | (byte) Code.Ldarga << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineArg << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Starg = new OpCode (
-			0xfe << 0 | 0x0b << 8 | (byte) Code.Starg << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineArg << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Ldloc = new OpCode (
-			0xfe << 0 | 0x0c << 8 | (byte) Code.Ldloc << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineVar << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push1 << 24);
-
-		 static const OpCode Ldloca = new OpCode (
-			0xfe << 0 | 0x0d << 8 | (byte) Code.Ldloca << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineVar << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Stloc = new OpCode (
-			0xfe << 0 | 0x0e << 8 | (byte) Code.Stloc << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineVar << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Localloc = new OpCode (
-			0xfe << 0 | 0x0f << 8 | (byte) Code.Localloc << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Endfilter = new OpCode (
-			0xfe << 0 | 0x11 << 8 | (byte) Code.Endfilter << 16 | (byte) FlowControl.Return << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Unaligned = new OpCode (
-			0xfe << 0 | 0x12 << 8 | (byte) Code.Unaligned << 16 | (byte) FlowControl.Meta << 24,
-			(byte) OpCodeType.Prefix << 0 | (byte) OperandType.ShortInlineI << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Volatile = new OpCode (
-			0xfe << 0 | 0x13 << 8 | (byte) Code.Volatile << 16 | (byte) FlowControl.Meta << 24,
-			(byte) OpCodeType.Prefix << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Tail = new OpCode (
-			0xfe << 0 | 0x14 << 8 | (byte) Code.Tail << 16 | (byte) FlowControl.Meta << 24,
-			(byte) OpCodeType.Prefix << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Initobj = new OpCode (
-			0xfe << 0 | 0x15 << 8 | (byte) Code.Initobj << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Constrained = new OpCode (
-			0xfe << 0 | 0x16 << 8 | (byte) Code.Constrained << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Prefix << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Cpblk = new OpCode (
-			0xfe << 0 | 0x17 << 8 | (byte) Code.Cpblk << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi_popi_popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Initblk = new OpCode (
-			0xfe << 0 | 0x18 << 8 | (byte) Code.Initblk << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Popi_popi_popi << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode No = new OpCode (
-			0xfe << 0 | 0x19 << 8 | (byte) Code.No << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Prefix << 0 | (byte) OperandType.ShortInlineI << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Rethrow = new OpCode (
-			0xfe << 0 | 0x1a << 8 | (byte) Code.Rethrow << 16 | (byte) FlowControl.Throw << 24,
-			(byte) OpCodeType.Objmodel << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push0 << 24);
-
-		 static const OpCode Sizeof = new OpCode (
-			0xfe << 0 | 0x1c << 8 | (byte) Code.Sizeof << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineType << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Refanytype = new OpCode (
-			0xfe << 0 | 0x1d << 8 | (byte) Code.Refanytype << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Primitive << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop1 << 16 | (byte) StackBehaviour.Pushi << 24);
-
-		 static const OpCode Readonly = new OpCode (
-			0xfe << 0 | 0x1e << 8 | (byte) Code.Readonly << 16 | (byte) FlowControl.Next << 24,
-			(byte) OpCodeType.Prefix << 0 | (byte) OperandType.InlineNone << 8 | (byte) StackBehaviour.Pop0 << 16 | (byte) StackBehaviour.Push0 << 24);
-	}; 
+		 static OpCode*  OneByteOpCode;
+		 static OpCode* TwoBytesOpCode;
+
+		 static const OpCode Nop;
+		 static const OpCode Break;
+		 static const OpCode Ldarg_0;
+		 static const OpCode Ldarg_1;
+		 static const OpCode Ldarg_2;
+		 static const OpCode Ldarg_3;
+		 static const OpCode Ldloc_0;
+		 static const OpCode Ldloc_1;
+		 static const OpCode Ldloc_2;
+		 static const OpCode Ldloc_3;
+		 static const OpCode Stloc_0;
+		 static const OpCode Stloc_1;
+		 static const OpCode Stloc_2;
+		 static const OpCode Stloc_3;
+		 static const OpCode Ldarg_S;
+		 static const OpCode Ldarga_S;
+		 static const OpCode Starg_S;
+		 static const OpCode Ldloc_S;
+		 static const OpCode Ldloca_S;
+		 static const OpCode Stloc_S;
+		 static const OpCode Ldnull;
+		 static const OpCode Ldc_I4_M1;
+		 static const OpCode Ldc_I4_0;
+		 static const OpCode Ldc_I4_1;
+		 static const OpCode Ldc_I4_2;
+		 static const OpCode Ldc_I4_3;
+		 static const OpCode Ldc_I4_4;
+		 static const OpCode Ldc_I4_5;
+		 static const OpCode Ldc_I4_6;
+		 static const OpCode Ldc_I4_7;
+		 static const OpCode Ldc_I4_8 ;
+		 static const OpCode Ldc_I4_S ;
+		 static const OpCode Ldc_I4 ;
+		 static const OpCode Ldc_I8 ;
+		 static const OpCode Ldc_R4 ;
+		 static const OpCode Ldc_R8 ;
+		 static const OpCode Dup ;
+		 static const OpCode Pop ;
+		 static const OpCode Jmp ;
+		 static const OpCode Call ;
+		 static const OpCode Calli ;
+		 static const OpCode Ret ;
+		 static const OpCode Br_S ;
+		 static const OpCode Brfalse_S ;
+		 static const OpCode Brtrue_S ;
+		 static const OpCode Beq_S ;
+		 static const OpCode Bge_S ;
+		 static const OpCode Bgt_S ;
+		 static const OpCode Ble_S ;
+		 static const OpCode Blt_S ;
+		 static const OpCode Bne_Un_S ;
+		 static const OpCode Bge_Un_S ;
+		 static const OpCode Bgt_Un_S ;
+		 static const OpCode Ble_Un_S ;
+		 static const OpCode Blt_Un_S ;
+		 static const OpCode Br ;
+		 static const OpCode Brfalse ;
+		 static const OpCode Brtrue ;
+		 static const OpCode Beq ;
+		 static const OpCode Bge ;
+		 static const OpCode Bgt ;
+		 static const OpCode Ble ;
+		 static const OpCode Blt ;
+		 static const OpCode Bne_Un ;
+		 static const OpCode Bge_Un ;
+		 static const OpCode Bgt_Un ;
+		 static const OpCode Ble_Un ;
+		 static const OpCode Blt_Un ;
+		 static const OpCode Switch ;
+		 static const OpCode Ldind_I1 ;
+		 static const OpCode Ldind_U1 ;
+		 static const OpCode Ldind_I2 ;
+		 static const OpCode Ldind_U2 ;
+		 static const OpCode Ldind_I4 ;
+		 static const OpCode Ldind_U4 ;
+		 static const OpCode Ldind_I8 ;
+		 static const OpCode Ldind_I ;
+		 static const OpCode Ldind_R4 ;
+		 static const OpCode Ldind_R8 ;
+		 static const OpCode Ldind_Ref ;
+		 static const OpCode Stind_Ref ;
+		 static const OpCode Stind_I1 ;
+		 static const OpCode Stind_I2 ;
+		 static const OpCode Stind_I4 ;
+		 static const OpCode Stind_I8 ;
+		 static const OpCode Stind_R4 ;
+		 static const OpCode Stind_R8 ;
+		 static const OpCode Add ;
+		 static const OpCode Sub ;
+		 static const OpCode Mul ;
+		 static const OpCode Div ;
+		 static const OpCode Div_Un ;
+		 static const OpCode Rem ;
+		 static const OpCode Rem_Un ;
+		 static const OpCode And ;
+		 static const OpCode Or ;
+		 static const OpCode Xor ;
+		 static const OpCode Shl ;
+		 static const OpCode Shr ;
+		 static const OpCode Shr_Un ;
+		 static const OpCode Neg ;
+		 static const OpCode Not ;
+		 static const OpCode Conv_I1 ;
+		 static const OpCode Conv_I2 ;
+		 static const OpCode Conv_I4 ;
+		 static const OpCode Conv_I8 ;
+		 static const OpCode Conv_R4 ;
+		 static const OpCode Conv_R8 ;
+		 static const OpCode Conv_U4 ;
+		 static const OpCode Conv_U8 ;
+		 static const OpCode Callvirt ;
+		 static const OpCode Cpobj ;
+		 static const OpCode Ldobj ;
+		 static const OpCode Ldstr ;
+		 static const OpCode Newobj ;
+		 static const OpCode Castclass ;
+		 static const OpCode Isinst ;
+		 static const OpCode Conv_R_Un ;
+		 static const OpCode Unbox ;
+		 static const OpCode Throw ;
+		 static const OpCode Ldfld ;
+		 static const OpCode Ldflda ;
+		 static const OpCode Stfld ;
+		 static const OpCode Ldsfld ;
+		 static const OpCode Ldsflda ;
+		 static const OpCode Stsfld ;
+		 static const OpCode Stobj ;
+		 static const OpCode Conv_Ovf_I1_Un ;
+		 static const OpCode Conv_Ovf_I2_Un ;
+		 static const OpCode Conv_Ovf_I4_Un ;
+		 static const OpCode Conv_Ovf_I8_Un ;
+		 static const OpCode Conv_Ovf_U1_Un ;
+		 static const OpCode Conv_Ovf_U2_Un ;
+		 static const OpCode Conv_Ovf_U4_Un ;
+		 static const OpCode Conv_Ovf_U8_Un ;
+		 static const OpCode Conv_Ovf_I_Un ;
+		 static const OpCode Conv_Ovf_U_Un ;
+		 static const OpCode Box ;
+		 static const OpCode Newarr ;
+		 static const OpCode Ldlen ;
+		 static const OpCode Ldelema ;
+		 static const OpCode Ldelem_I1 ;
+		 static const OpCode Ldelem_U1 ;
+		 static const OpCode Ldelem_I2 ;
+		 static const OpCode Ldelem_U2 ;
+		 static const OpCode Ldelem_I4 ;
+		 static const OpCode Ldelem_U4 ;
+		 static const OpCode Ldelem_I8 ;
+		 static const OpCode Ldelem_I ;
+		 static const OpCode Ldelem_R4 ;
+		 static const OpCode Ldelem_R8 ;
+		 static const OpCode Ldelem_Ref ;
+		 static const OpCode Stelem_I ;
+		 static const OpCode Stelem_I1 ;
+		 static const OpCode Stelem_I2 ;
+		 static const OpCode Stelem_I4 ;
+		 static const OpCode Stelem_I8 ;
+		 static const OpCode Stelem_R4 ;
+		 static const OpCode Stelem_R8 ;
+		 static const OpCode Stelem_Ref ;
+		 static const OpCode Ldelem_Any ;
+		 static const OpCode Stelem_Any ;
+		 static const OpCode Unbox_Any ;
+		 static const OpCode Conv_Ovf_I1 ;
+		 static const OpCode Conv_Ovf_U1 ;
+		 static const OpCode Conv_Ovf_I2 ;
+		 static const OpCode Conv_Ovf_U2 ;
+		 static const OpCode Conv_Ovf_I4 ;
+		 static const OpCode Conv_Ovf_U4 ;
+		 static const OpCode Conv_Ovf_I8 ;
+		 static const OpCode Conv_Ovf_U8 ;
+		 static const OpCode Refanyval ;
+		 static const OpCode Ckfinite ;
+		 static const OpCode Mkrefany ;
+		 static const OpCode Ldtoken ;
+		 static const OpCode Conv_U2 ;
+		 static const OpCode Conv_U1 ;
+		 static const OpCode Conv_I ;
+		 static const OpCode Conv_Ovf_I ;
+		 static const OpCode Conv_Ovf_U ;
+		 static const OpCode Add_Ovf ;
+		 static const OpCode Add_Ovf_Un ;
+		 static const OpCode Mul_Ovf ;
+		 static const OpCode Mul_Ovf_Un ;
+		 static const OpCode Sub_Ovf ;
+		 static const OpCode Sub_Ovf_Un ;
+		 static const OpCode Endfinally ;
+		 static const OpCode Leave ;
+		 static const OpCode Leave_S ;
+		 static const OpCode Stind_I ;
+		 static const OpCode Conv_U ;
+		 static const OpCode Arglist ;
+		 static const OpCode Ceq ;
+		 static const OpCode Cgt ;
+		 static const OpCode Cgt_Un ;
+		 static const OpCode Clt ;
+		 static const OpCode Clt_Un ;
+		 static const OpCode Ldftn ;
+		 static const OpCode Ldvirtftn ;
+		 static const OpCode Ldarg ;
+		 static const OpCode Ldarga ;
+		 static const OpCode Starg ;
+		 static const OpCode Ldloc ;
+		 static const OpCode Ldloca ;
+		 static const OpCode Stloc ;
+		 static const OpCode Localloc ;
+		 static const OpCode Endfilter ;
+		 static const OpCode Unaligned ;
+		 static const OpCode Volatile ;
+		 static const OpCode Tail ;
+		 static const OpCode Initobj ;
+		 static const OpCode Constrained ;
+		 static const OpCode Cpblk ;
+		 static const OpCode Initblk ;
+		 static const OpCode No ;
+		 static const OpCode Rethrow ;
+		 static const OpCode Sizeof ;
+		 static const OpCode Refanytype ;
+		 static const OpCode Readonly ;	
+   }; 
 }
 
 

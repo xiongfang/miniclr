@@ -9,22 +9,25 @@
 #ifndef OPCODE_H
 #define OPCODE_H
 
-#include <array>
-
+#include "config.h"
+#include "Code.h"
 
 namespace Cil {
+    namespace FlowControl{
+        enum FlowControl {
+            Branch,
+            Break,
+            Call,
+            Cond_Branch,
+            Meta,
+            Next,
+            Phi,
+            Return,
+            Throw,
+        };    
+    }
 
-    enum FlowControl {
-        Branch,
-        Break,
-        Call,
-        Cond_Branch,
-        Meta,
-        Next,
-        Phi,
-        Return,
-        Throw,
-    };
+    
 
     enum OpCodeType {
         Annotation,
@@ -90,114 +93,13 @@ namespace Cil {
         Varpush,
     };
 
-    struct OpCode {
-        const byte op1;
-        const byte op2;
-        const byte code;
-        const byte flow_control;
-        const byte opcode_type;
-        const byte operand_type;
-        const byte stack_behavior_pop;
-        const byte stack_behavior_push;
-
-        std::string Name() {
-            return OpCodeNames.names [(int) Code];
-        }
-
-        int Size() {
-            return op1 == 0xff ? 1 : 2;
-        }
-
-        byte Op1() {
-            return op1;
-        }
-
-        byte Op2() {
-            return op2;
-        }
-
-        short Value() {
-            return op1 == 0xff ? op2 : (short) ((op1 << 8) | op2);
-        }
-
-        Code Code() {
-            return (Code) code;
-        }
-
-        FlowControl FlowControl() {
-            return (FlowControl) flow_control;
-        }
-
-        OpCodeType OpCodeType() {
-            return (OpCodeType) opcode_type;
-        }
-
-        OperandType OperandType() {
-            return (OperandType) operand_type;
-        }
-
-        StackBehaviour StackBehaviourPop() {
-            return (StackBehaviour) stack_behavior_pop;
-        }
-
-        StackBehaviour StackBehaviourPush() {
-            return (StackBehaviour) stack_behavior_push;
-        }
-
-        OpCode(int x, int y) {
-            this.op1 = (byte) ((x >> 0) & 0xff);
-            this.op2 = (byte) ((x >> 8) & 0xff);
-            this.code = (byte) ((x >> 16) & 0xff);
-            this.flow_control = (byte) ((x >> 24) & 0xff);
-
-            this.opcode_type = (byte) ((y >> 0) & 0xff);
-            this.operand_type = (byte) ((y >> 8) & 0xff);
-            this.stack_behavior_pop = (byte) ((y >> 16) & 0xff);
-            this.stack_behavior_push = (byte) ((y >> 24) & 0xff);
-
-            if (op1 == 0xff)
-                OpCodes.OneByteOpCode [op2] = this;
-            else
-                OpCodes.TwoBytesOpCode [op2] = this;
-        }
-
-        virtual int GetHashCode() {
-            return Value;
-        }
-
-        //		virtual bool Equals (object obj)
-        //		{
-        //			if (!(obj is OpCode))
-        //				return false;
-        //
-        //			var opcode = (OpCode) obj;
-        //			return op1 == opcode.op1 && op2 == opcode.op2;
-        //		}
-        //
-        //		public bool Equals (OpCode opcode)
-        //		{
-        //			return op1 == opcode.op1 && op2 == opcode.op2;
-        //		}
-
-        static bool operator==(OpCode one, OpCode other) {
-            return one.op1 == other.op1 && one.op2 == other.op2;
-        }
-
-        static bool operator!=(OpCode one, OpCode other) {
-            return one.op1 != other.op1 || one.op2 != other.op2;
-        }
-
-        virtual std::string ToString() {
-            return Name;
-        }
-    };
-
     class OpCodeNames {
     public:
         static std::array<std::string, 219> names;
 
-        static OpCodeNames() {
-            auto table = new byte []{
+        
+        static void  Static_OpCodeNames() {
+            int8 table[] = {
                 3, 110, 111, 112,
                 5, 98, 114, 101, 97, 107,
                 7, 108, 100, 97, 114, 103, 46, 48,
@@ -432,6 +334,96 @@ namespace Cil {
             }
         }
     };
+    
+    struct OpCode {
+        int8 op1;
+        int8 op2;
+        int8 code;
+        int8 flow_control;
+        int8 opcode_type;
+        int8 operand_type;
+        int8 stack_behavior_pop;
+        int8 stack_behavior_push;
+
+        std::string Name() {
+            return OpCodeNames::names [(int)code];
+        }
+
+        int Size() {
+            return op1 == 0xff ? 1 : 2;
+        }
+
+        int8 Op1() {
+            return op1;
+        }
+
+        int8 Op2() {
+            return op2;
+        }
+
+        short Value() {
+            return op1 == 0xff ? op2 : (short) ((op1 << 8) | op2);
+        }
+
+//        Code GetCode() {
+//            return (Code) code;
+//        }
+//
+//        FlowControl GetFlowControl() {
+//            return (FlowControl) flow_control;
+//        }
+//
+//        OpCodeType GetOpCodeType() {
+//            return (OpCodeType) opcode_type;
+//        }
+//
+//        OperandType GetOperandType() {
+//            return (OperandType) operand_type;
+//        }
+//
+//        StackBehaviour StackBehaviourPop() {
+//            return (StackBehaviour) stack_behavior_pop;
+//        }
+//
+//        StackBehaviour StackBehaviourPush() {
+//            return (StackBehaviour) stack_behavior_push;
+//        }
+        OpCode(){}
+        
+        OpCode(int x, int y);
+
+        virtual int GetHashCode() {
+            return Value();
+        }
+
+        //		virtual bool Equals (object obj)
+        //		{
+        //			if (!(obj is OpCode))
+        //				return false;
+        //
+        //			var opcode = (OpCode) obj;
+        //			return op1 == opcode.op1 && op2 == opcode.op2;
+        //		}
+        //
+        //		public bool Equals (OpCode opcode)
+        //		{
+        //			return op1 == opcode.op1 && op2 == opcode.op2;
+        //		}
+
+        bool operator==(OpCode other) {
+            return op1 == other.op1 && op2 == other.op2;
+        }
+
+        bool operator!=(OpCode other) {
+            return op1 != other.op1 || op2 != other.op2;
+        }
+
+        virtual std::string ToString() {
+            return Name();
+        }
+    };
+
+    
 
 }
 #endif /* OPCODE_H */

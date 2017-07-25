@@ -8,7 +8,7 @@
 
 #ifndef USERSTRINGHEAP_H
 #define USERSTRINGHEAP_H
-
+#include "stringheap.h"
 namespace Metadata
 {
    class UserStringHeap:public StringHeap {

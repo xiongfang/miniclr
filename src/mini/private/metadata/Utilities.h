@@ -16,7 +16,7 @@ namespace Metadata
 		const int TableCount = 58;
 		const int CodedIndexCount = 14;
 
-		static uint ReadCompressedUInt32 (std::vector<uint8>& data,int32& position);
+		static uint32 ReadCompressedUInt32 (std::vector<uint8>& data,int32& position);
 		
 
 		//static MetadataToken GetMetadataToken (CodedIndex& self, uint32 data);
