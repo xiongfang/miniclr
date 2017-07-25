@@ -2,6 +2,7 @@
 #include "ceeloader.h"
 #include "file.h"
 #include "path.h"
+#include "ImageReader.h"
 void CEELoader::AddSeachPath(const std::string& path) {
     load_path_list.push_back(path);
 }
@@ -68,6 +69,9 @@ struct CLI_Runtime_Flags
 
 void CEELoader::Parse(uint8* data,uint32 len)
 {
+    PE::ImageReader Reader;
+    Reader.ReadImage();
+    
     //ms dos header
     char lfanew[4] = { 'P','E','\0','\0' };
     for(int32 i = 0;i<4;i++)
